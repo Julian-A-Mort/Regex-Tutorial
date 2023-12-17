@@ -24,7 +24,6 @@ We will be breaking down a number of key concepts as laid out below.
 - [Grouping and Capturing](#grouping-and-capturing)
 - [Bracket Expressions](#bracket-expressions)
 - [Greedy and Lazy Match](#greedy-and-lazy-match)
-- [Boundaries](#boundaries)
 - [Back-references](#back-references)
 - [Look-ahead and Look-behind](#look-ahead-and-look-behind)
 
@@ -144,11 +143,35 @@ In contrast, lazy matching is achieved by placing a `?` after the quantifier. Th
 
 While lazy matching provides a minimal match, it's not typically used in password validation scenarios like ours. In password validation, we generally prefer greedy matching to ensure the entire password (string) is thoroughly evaluated against all specified criteria.
 
-### Boundaries
-
 ### Back-references
 
 ### Look-ahead and Look-behind
+Look-ahead and look-behind assertions allow for conditional matching based on preceding and subsequent patterms. This is crucial when a match depends on the surrounding context but without including the context of the match.
+
+Look-ahead Assertions
+1. Positive Look-ahead: `(?=...)`
+    * The specified pattern must follow.
+    * Example: `X(?=Y)` wherein `X` matches only if `X` is followed by `Y`.
+2. Negative Look-ahead: `(?!...)`
+    * The specified pattern must not follow.
+    * Example: `X(?!Y)` wherein `X` matches only if `X` is not followed by `Y`.
+
+Look-behind Assertions
+1. Positive Look-behind: `(?<=...)`
+    * The specified pattern must precede.
+    * Example: `(?<=Y)X` wherein matches `X` only if `X` is preceded by `Y`.
+2. Negative Look-behind: 
+
+
+Lets return to our Password Validation regex: 
+```
+^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
+```
+
+Here we are using look-ahead assertions:
+
+* `(?=.*[a-z])`: 
+
 
 ## Author
 
