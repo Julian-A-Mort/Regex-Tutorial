@@ -21,7 +21,6 @@ We will be breaking down a number of key concepts as laid out below.
 - [Anchors](#anchors)
 - [Quantifiers](#quantifiers)
 - [Character Classes](#character-classes)
-<!-- - [Flags](#flags) -->
 - [Grouping and Capturing](#grouping-and-capturing)
 - [Bracket Expressions](#bracket-expressions)
 - [Greedy and Lazy Match](#greedy-and-lazy-match)
@@ -115,6 +114,19 @@ In our pattern the look-ahead assertions, for example `(?=.*[a-z])`, are example
 This is important as we want to check the presence of certain character types, ensuring the different conditions can operate indepedndently without clashing with each other.
 
 ### Bracket Expressions
+Bracket expressions are used to specify a character set that can match, together in a single position. This is done by using square brackets `[]`.
+
+Bracket expressions are used throughout our regex:
+```
+^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
+```
+
+Here bracket expressions are used in two ways:
+
+* Character Ranges: Here `[a-z]` and `[A-Z]` are character ranges. They match any charachter from `a` to `z`and `A` to `Z` respectively. 
+* Combining Character Classes: In `[A-Za-z\d@$!%*?&]` we have combined multiple character classes/ranges. `A-Z`, `a-z`, `\d`and `@$!%*?&`.
+
+Within brackets special characters `@$!%*?&` lose their special maning and are treated as their literal character. This allows them to be included directly without the need for escape characters.
 
 ### Greedy and Lazy Match
 
