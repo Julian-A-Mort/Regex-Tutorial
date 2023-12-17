@@ -1,10 +1,18 @@
-# Title (replace with your title)
+# Password Validation Regex Tutorial
 
-Introductory paragraph (replace this with your text)
+Welcome to our tutorial on one of the most mysterious and important regular expressions: Password Validation.
+
+One of the most important uses of regex is in validating the complexity and strength of a users password. A regex pattern can enforce a mix of numbers, charachters, symbols and more. 
+
+By the end of this tutorial you will have an understranding of how this regex works and its applications.
 
 ## Summary
 
-Briefly summarize the regex you will be describing and what you will explain. Include a code snippet of the regex. Replace this text with your summary.
+In this gist we will be going through and explain the a regex pattern to enfore a sites password policies. Here is the regex pattern we will be exploring: 
+
+^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
+
+We will be breaking down a number of key concepts as laid out below.
 
 ## Table of Contents
 
