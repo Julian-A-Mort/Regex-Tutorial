@@ -146,7 +146,7 @@ While lazy matching provides a minimal match, it's not typically used in passwor
 ### Back-references
 
 ### Look-ahead and Look-behind
-Look-ahead and look-behind assertions allow for conditional matching based on preceding and subsequent patterms. This is crucial when a match depends on the surrounding context but without including the context of the match.
+Look-ahead and look-behind assertions in regular expressions allow for conditional matching based on the patterns that either follow or precede a given point in the string. This capability is crucial when the validity of a match depends on its surrounding context, but without including that context in the match itself.
 
 Look-ahead Assertions
 1. Positive Look-ahead: `(?=...)`
@@ -160,8 +160,9 @@ Look-behind Assertions
 1. Positive Look-behind: `(?<=...)`
     * The specified pattern must precede.
     * Example: `(?<=Y)X` wherein matches `X` only if `X` is preceded by `Y`.
-2. Negative Look-behind: 
-
+2. Negative Look-behind: `(?<!...)`
+    * The specified pattern must not preced.
+    * Eample: `(?<!Y)X` wherein matched `X` only if `X` is not preceded by `Y`.
 
 Lets return to our Password Validation regex: 
 ```
@@ -170,8 +171,14 @@ Lets return to our Password Validation regex:
 
 Here we are using look-ahead assertions:
 
-* `(?=.*[a-z])`: 
+* `(?=.*[a-z])`: A positive a look-ahead assertion checking for the presence of at least one lowercase letter within the string. `.*` allows for any charachter between the start of the string and this instance of `[a-z]`.
+* The same can be said for `(?=.*[A-Z])`, `(?=.*\d)` and `(?=.*[@$!%*?&])` and their relevant characters.
 
+The look-ahead assertion makes sure the password contains a variety of characters without consuming those characters. It only checks that the condition is being met at any point within the string.
+
+Look-behind assertions are generally not used in password validation and not within our example. 
+
+Look-ahead assertions are a key component of password validation. It allows pattern matching that is sensitive to context allowing multiple independent criteria within the pattern.
 
 ## Author
 
