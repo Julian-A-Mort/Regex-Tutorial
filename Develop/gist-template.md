@@ -171,14 +171,12 @@ Lets return to our Password Validation regex:
 
 Here we are using look-ahead assertions:
 
-* `(?=.*[a-z])`: A positive a look-ahead assertion checking for the presence of at least one lowercase letter within the string. `.*` allows for any charachter between the start of the string and this instance of `[a-z]`.
-* The same can be said for `(?=.*[A-Z])`, `(?=.*\d)` and `(?=.*[@$!%*?&])` and their relevant characters.
+* `(?=.*[a-z])`: A positive a look-ahead assertion checking for the presence of at least one lowercase letter within the string. The `.*` allows for any characters (including none) between the start of the string and the lowercase letter.
+* Similarly `(?=.*[A-Z])`, `(?=.*\d)` and `(?=.*[@$!%*?&])` ensure the presence of uppercase letters, digits, and special characters, respectively.
 
-The look-ahead assertion makes sure the password contains a variety of characters without consuming those characters. It only checks that the condition is being met at any point within the string.
+These look-ahead assertions are key in password validation as they ensure the password contains a variety of character types. They check conditions without consuming characters, meaning they do not affect the overall matching but ensure that each condition is met somewhere within the string.
 
-Look-behind assertions are generally not used in password validation and not within our example. 
-
-Look-ahead assertions are a key component of password validation. It allows pattern matching that is sensitive to context allowing multiple independent criteria within the pattern.
+Look-behind assertions, while not used in this password validation example, offer similar conditional checking for patterns preceding a given point in the string.
 
 ## Author
 
