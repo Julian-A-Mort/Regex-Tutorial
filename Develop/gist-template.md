@@ -129,6 +129,20 @@ Here bracket expressions are used in two ways:
 Within brackets special characters `@$!%*?&` lose their special maning and are treated as their literal character. This allows them to be included directly without the need for escape characters.
 
 ### Greedy and Lazy Match
+In a regular expression greedy and lazy (non-greedy) natching dictates how much of a string is matched when a quanitifer is involved.
+
+Quantifiers in regex are greedy by default, meaning they match as many occurrences of a pattern as possible, capturing the longest possible string that satisfies the pattern.
+
+In relation to our Password Validation regex:
+```
+^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
+```
+
+Here, the quantifier `{8,}` is greedy. It selects the longest possible sequence of characters from the set `[A-Za-z\d@$!%*?&]`, with a requirement of at least 8 characters. This ensures the entire string is evaluated during password validation, which is crucial for checking the minimum length requirement.
+
+In contrast, lazy matching is achieved by placing a `?` after the quantifier. This approach matches the shortest possible string that satisfies the pattern.
+
+While lazy matching provides a minimal match, it's not typically used in password validation scenarios like ours. In password validation, we generally prefer greedy matching to ensure the entire password (string) is thoroughly evaluated against all specified criteria.
 
 ### Boundaries
 
