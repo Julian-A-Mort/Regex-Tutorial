@@ -99,9 +99,20 @@ Other potential character class refrences are:
 * `[A-Fa-f0-9]`: For any hexadecimal digit.
 * `[aeiou]`: Custom charachter sets can also be used. In this example we are matching to any lowercase vowel.
 
-### Flags
-
 ### Grouping and Capturing
+Grouping in regex is done using `()`. When part of a pattern are grouped the regex engine will treat the enclosed sequence as a single unit. This approach is  useful for applying quantifiers / conditions to an entire sequence rather than individual characters.
+
+Using parentheses will also create a capturing group. This stores the part of the string that matches the group for use later in the regex or the larger application.
+
+For our password validation we use `Non-Captruing Groups`, in which the pattern part is grouped without being captured. This is denoted as `(?:...)`.
+
+```
+^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
+```
+
+In our pattern the look-ahead assertions, for example `(?=.*[a-z])`, are examples of non-capturing groups. This allows us to impose multiple independent conditions on the string, such as containing a minimum of one letter or one upperclase etc.
+
+This is important as we want to check the presence of certain character types, ensuring the different conditions can operate indepedndently without clashing with each other.
 
 ### Bracket Expressions
 
