@@ -50,6 +50,27 @@ The `$` anchor meanwhile is the end-of-string achor, denoting the end of the pat
 The use of anchors is vital for password validation as it determines if validation rules have been applied correctly to the entrie password, not just part of it.
 
 ### Quantifiers
+In regular expressions quantifiers are used to dictate how many times a charachter, class or group need to occur for the password to be valid. This is expressed in the `{min,max}` format. In which `min` referes to the minimum number of times the defined element must occur, where as `max` refers to the maximum number of times.
+
+So in the following code the relevent charachters are `[A-Za-z\d@$!%*?&]` and `{8,}`.
+
+```
+^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
+```
+
+In this password pattern `{8,}` denotes that the charachters from our primary charachter set `[A-Za-z\d@$!%*?&]` must appear 8 times.
+
+* `8`: The password must contain a minimym of 8 charachters
+* `,`: This indicates there is no upper limit on charachter usage
+
+In the following code we have denoted both an upper and lower limit.
+
+```
+^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$
+```
+
+* `8`: Here again the password must contain a minimum of 8 charachters
+* `12`: This indicates the maximum number of times the charachter set can appear
 
 ### OR Operator
 
