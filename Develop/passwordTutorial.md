@@ -143,8 +143,6 @@ In contrast, lazy matching is achieved by placing a `?` after the quantifier. Th
 
 While lazy matching provides a minimal match, it's not typically used in password validation scenarios like ours. In password validation, we generally prefer greedy matching to ensure the entire password (string) is thoroughly evaluated against all specified criteria.
 
-### Back-references
-
 ### Look-ahead and Look-behind
 Look-ahead and look-behind assertions in regular expressions allow for conditional matching based on the patterns that either follow or precede a given point in the string. This capability is crucial when the validity of a match depends on its surrounding context, but without including that context in the match itself.
 
@@ -180,4 +178,4 @@ Look-behind assertions, while not used in this password validation example, offe
 
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+If you have any questions about this repo, then please open an issue or contact me on GitHub at [Julian-A-Mort](https://github.com/Julian-A-Mort) 
